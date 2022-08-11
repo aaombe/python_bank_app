@@ -5,13 +5,13 @@ def create_new_user():
     # get user input
     name = input("Enter name: ")
     age = input("Enter age : ")
-    gender = input("Enter gender: ")
+    email = input("Enter email: ")
     address = input("Enter your address: ")
     deposit = get_amount()  # call get_amount() to get a valid input
     print()  # print new line
 
     # create new user object
-    user = Bank(name, age, gender, address)
+    user = Bank(name, age, email, address)
     user.set_balance(deposit)
 
     return user
@@ -20,11 +20,12 @@ def create_new_user():
 # prompt user to enter amount not less than zero
 def get_amount():
     while True:
-        deposit = float(input("Enter amount for the transaction: "))
+        deposit = float(input("Enter amount for the transaction : "))
         if deposit < 0:
             print("Invalid amount ")
         else:
-            return deposit
+            break
+    return deposit
 
 
 # prompt user to select a valid transaction
@@ -36,7 +37,8 @@ def type_of_transaction():
         if ttype not in "1 2 3":
             print("Invalid")
         else:
-            return int(ttype)
+            break
+        return int(ttype)
 
 
 def make_transaction(user):
